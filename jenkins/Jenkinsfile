@@ -8,7 +8,7 @@ pipeline {
   }
 
   triggers {
-    cron('H/90 * * * *')
+    cron('H/60 * * * *')
     GenericTrigger(
       genericVariables: [
         [key: 'GITHUB_PR_ACTION',   value: '$.action',                defaultValue: ''],
