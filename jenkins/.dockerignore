@@ -1,0 +1,6 @@
+.git
+*.tar
+*.zip
+*.log
+*.md
+node_modules
