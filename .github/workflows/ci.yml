@@ -1,0 +1,17 @@
+name: CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+
+jobs:
+  validate-Jenkinsfile:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Validate Jenkinsfile
+        run: |
+          curl --fail --show-error -X POST \
+            https://jenkins.baotrang.io.vn/pipeline-model-converter/validate \
+            -F "jenkinsfile=<Jenkinsfile"

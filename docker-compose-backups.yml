@@ -1,0 +1,20 @@
+version: "3.9"
+
+services:
+  jenkins:
+    build: .
+    container_name: jenkins
+    privileged: true
+    user: root
+    ports:
+      - "8000:8080"
+      - "50000:50000"
+    volumes:
+      - ${JENKINS_VOLUME_BACKUPS_PATH}:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - JAVA_OPTS=-Dhudson.security.csrf.GlobalCrumbIssuerConfiguration.DISABLE_CSRF_PROTECTION=true
+    restart: unless-stopped
+
+volumes:
+  jenkins_data_backups:
